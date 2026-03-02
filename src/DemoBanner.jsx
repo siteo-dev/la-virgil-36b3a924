@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Info, X, Zap, ArrowRight, Pencil, Headphones, Clock, MessageCircle, Server, Shield, Search, Gauge, Lock, Globe, Mail, Zap, Check, Minus, Loader2 } from 'lucide-react'
+import { Info, X, Zap, ArrowRight, Pencil, Headphones, Clock, MessageCircle, Server, Shield, Search, Gauge, Lock, Globe, Mail, Check, Minus, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -124,10 +124,8 @@ export default function DemoBanner() {
                       <span className="text-3xl sm:text-4xl font-black text-white">89&euro;</span>
                       <span className="text-zinc-500">/month</span>
                     </div>
-                    <div className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 mb-4 sm:mb-5">
-                      <span className="text-sm font-semibold text-white">199&euro;</span>
-                      <span className="text-sm text-zinc-400">setup</span>
-                      <span className="text-[10px] uppercase tracking-wider font-medium px-1.5 py-0.5 rounded-full" style={{ backgroundColor: `rgba(${ACCENT_RGB}, 0.15)`, color: ACCENT }}>one-time</span>
+                    <div className="inline-flex items-center py-1 mb-4">
+                      <span className="text-xs tracking-wider font-medium px-1.5 py-0.5 rounded-full" style={{backgroundColor: `rgba(${ACCENT_RGB}, 0.15)`, color: ACCENT }}>+199&euro; <span className='opacity-50'> setup (one-time)</span></span>
                     </div>
                     <div className="space-y-2.5 sm:space-y-3 mb-5 sm:mb-6">
                       {features.map((f) => (
