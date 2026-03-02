@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Shield, Award, Users, Clock, Star, MapPin, Phone, Mail, Instagram } from 'lucide-react';
+import { Menu, X, Phone, MapPin, Mail, Clock, Shield, Award, Users, Star, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -26,7 +26,7 @@ export default function App() {
 
   const navLinks = [
     { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
+    { id: 'about', label: 'Our Story' },
     { id: 'services', label: 'Menu' },
     { id: 'why-us', label: 'Why Us' },
     { id: 'reviews', label: 'Reviews' },
@@ -35,141 +35,110 @@ export default function App() {
   ];
 
   const stats = [
-    { value: 350, suffix: '+', label: 'Happy Customers' },
-    { value: 100, suffix: '%', label: 'Local Ingredients' },
-    { value: 5, suffix: '+', label: 'Years of Excellence' },
-    { value: 24, suffix: '/7', label: 'Service Availability' }
-  ];
-
-  const aboutItems = [
-    {
-      icon: Shield,
-      title: "Authentic Recipes",
-      description: "Passed down through generations"
-    },
-    {
-      icon: Award,
-      title: "Local Ingredients",
-      description: "Sourced from regional farms"
-    },
-    {
-      icon: Users,
-      title: "Family Tradition",
-      description: "Time-tested cooking methods"
-    },
-    {
-      icon: Clock,
-      title: "Warm Atmosphere",
-      description: "Cozy dining experience"
-    }
-  ];
-
-  const services = [
-    {
-      name: "Ciorba de vaca",
-      price: "34 RON",
-      description: "Creamy beef soup with herbs"
-    },
-    {
-      name: "Ciorba de perisoare",
-      price: "33 RON",
-      description: "Tender pork rib soup"
-    },
-    {
-      name: "Vita",
-      price: "89 RON",
-      description: "Slow-braised beef with garlic and paprika"
-    },
-    {
-      name: "Ciorbe de burta",
-      price: "44 RON",
-      description: "Hearty tripe soup with fresh herbs"
-    }
+    { value: 5, suffix: '+', label: 'Years Experience' },
+    { value: 200, suffix: '+', label: 'Happy Customers' },
+    { value: 15, suffix: '+', label: 'Traditional Recipes' },
+    { value: 34, suffix: ' RON', label: 'Average Price' }
   ];
 
   const whyUsFeatures = [
-    {
-      Icon: Shield,
-      name: "Authentic Recipes",
-      description: "Our dishes are made using time-honored family recipes passed down through generations, ensuring genuine Romanian flavors."
-    },
-    {
-      Icon: Award,
-      name: "Local Sourcing",
-      description: "We source all ingredients from local farms and butchers to guarantee freshness and support our community."
-    },
-    {
-      Icon: Users,
-      name: "Family Atmosphere",
-      description: "Our cozy dining room provides a warm, welcoming environment perfect for families and gatherings."
-    },
-    {
-      Icon: Clock,
-      name: "Consistent Quality",
-      description: "Every dish is prepared with the same care and attention to detail, ensuring consistent quality every time."
-    }
+    { Icon: Shield, name: "Authentic Heritage", description: "Our recipes have been perfected over generations, bringing you the true taste of Romania.", className: "col-span-3 lg:col-span-1", background: <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent" /> },
+    { Icon: Award, name: "Quality Ingredients", description: "We source only the finest local produce and meats to ensure exceptional flavor in every dish.", className: "col-span-3 lg:col-span-2", background: <DotPattern opacity={0.04} className="absolute inset-0" /> },
+    { Icon: Users, name: "Community Focus", description: "As a family-owned establishment, we create a welcoming atmosphere that makes every guest feel at home.", className: "col-span-3 lg:col-span-2", background: <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-amber-500/10 to-transparent" /> },
+    { Icon: Clock, name: "Consistent Excellence", description: "Every meal is prepared with care and attention to detail for an unforgettable dining experience.", className: "col-span-3 lg:col-span-1", background: <DotPattern opacity={0.04} className="absolute inset-0" /> }
   ];
 
   const reviews = [
     {
-      name: "Maria Ionescu",
-      gender: "F",
-      text: "The ciorba de vaca was incredible — rich and comforting, just like my grandmother used to make. Highly recommended!"
+      name: "Maria G.",
+      role: "Female",
+      text: "The ciorba de vaca was absolutely perfect! I've been looking for this recipe for years and finally found it here.",
+      rating: 5
     },
     {
-      name: "Alexei Popescu",
-      gender: "M",
-      text: "Vita was cooked perfectly, tender and full of flavor. Great portions and excellent service."
+      name: "Ion B.",
+      role: "Male",
+      text: "Vita is so tender and full of flavor - the best beef dish I've had in Domneşti. Will definitely come back!",
+      rating: 5
     },
     {
-      name: "Elena Stoica",
-      gender: "F",
-      text: "Best traditional Romanian food in Domnesti! The ciorbe de burta is a must-try — hearty and delicious."
+      name: "Elena D.",
+      role: "Female",
+      text: "The atmosphere is cozy and welcoming, just like a traditional Romanian home. The service was exceptional.",
+      rating: 5
     }
   ];
 
   const faqItems = [
     {
       question: "What are your opening hours?",
-      answer: "We are open daily from 11 AM to 10 PM. Closed on Sundays for maintenance."
+      answer: "We are open daily from 12 PM to 10 PM. Reservations recommended for evening visits."
     },
     {
-      question: "Do you offer delivery services?",
-      answer: "Yes, we provide delivery within Domnesti area with a minimum order of 50 RON."
+      question: "Do you offer vegetarian options?",
+      answer: "While our menu focuses on traditional meat dishes, we can accommodate special requests with advance notice."
     },
     {
-      question: "Can I make reservations?",
-      answer: "Reservations are encouraged, especially for larger groups. You can book through our website or call us directly."
+      question: "Can I book a private event?",
+      answer: "Yes! We offer private dining spaces for events and celebrations. Contact us to discuss arrangements."
     },
     {
-      question: "Are you suitable for vegetarians?",
-      answer: "While we specialize in meat dishes, we can accommodate some vegetarian requests with advance notice."
+      question: "Is your restaurant wheelchair accessible?",
+      answer: "Our main dining area is accessible but please call ahead to ensure we can meet your needs."
     },
     {
-      question: "Do you have gluten-free options?",
-      answer: "We offer a few gluten-free dishes upon request. Please inform us before ordering to ensure proper preparation."
+      question: "Do you deliver food?",
+      answer: "Currently, we focus on dine-in service but are considering delivery options in the future."
     },
     {
-      question: "How can I find your location?",
-      answer: "Our restaurant is located at soseaua tudor valdimirescu, domnesti, ilfov. You can use Google Maps for directions."
+      question: "How can I reach La Virgil?",
+      answer: "We're located at soseaua tudor valdimirescu, domnesti, ilfov. Follow our address for directions."
     }
   ];
 
-  const contactItems = [
+  const services = [
+    {
+      name: "Ciorba de vaca",
+      description: "Creamy beef soup with fresh herbs",
+      price: "34 RON"
+    },
+    {
+      name: "Ciorba de perisoare",
+      description: "Lamb and vegetable soup",
+      price: "33 RON"
+    },
+    {
+      name: "Vita",
+      description: "Slow-braised beef with garlic, paprika, and fresh herbs",
+      price: "89 RON"
+    },
+    {
+      name: "Ciorbe de burta",
+      description: "Tender beef stomach soup with aromatic spices",
+      price: "44 RON"
+    }
+  ];
+
+  const valueProps = [
+    {
+      icon: Shield,
+      title: "Traditional Recipes",
+      description: "Passed down through generations"
+    },
     {
       icon: MapPin,
-      title: "Address",
-      content: "soseaua tudor valdimirescu, domnesti, ilfov"
+      title: "Local Ingredients",
+      description: "Sourced from regional farms"
     },
     {
-      icon: Phone,
-      title: "Phone",
-      content: "+40757263744"
+      icon: Users,
+      title: "Warm Hospitality",
+      description: "Family-run experience"
     },
     {
-      icon: Mail,
-      title: "Email",
-      content: "contact@virgil.com"
+      icon: Clock,
+      title: "Authentic Atmosphere",
+      description: "Cozy dining in historic setting"
     }
   ];
 
@@ -187,7 +156,7 @@ export default function App() {
       }),
       { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
     );
-    
+
     document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));
     
     return () => {
@@ -196,15 +165,20 @@ export default function App() {
     };
   }, []);
 
-  const getAvatarImage = (gender) => {
-    return gender === 'M' 
-      ? '/assets/people/boy_1.jpg' 
-      : '/assets/people/girl_1.jpg';
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(id);
+      setIsMenuOpen(false);
+    }
   };
 
   return (
     <>
       <DemoBanner />
+      
+      {/* Navbar */}
       <header className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto mt-4">
           <div className="flex items-center justify-between h-14 px-4 sm:px-6 rounded-full bg-black/60 backdrop-blur-xl border border-white/[0.08]">
@@ -215,6 +189,7 @@ export default function App() {
                 <a 
                   key={link.id} 
                   href={`#${link.id}`} 
+                  onClick={(e) => { e.preventDefault(); scrollToSection(link.id); }}
                   className="px-3 py-1.5 text-sm text-zinc-400 hover:text-white rounded-full hover:bg-white/[0.05] transition-colors"
                 >
                   {link.label}
@@ -233,7 +208,7 @@ export default function App() {
                 <a 
                   key={link.id} 
                   href={`#${link.id}`} 
-                  onClick={() => setIsMenuOpen(false)} 
+                  onClick={(e) => { e.preventDefault(); scrollToSection(link.id); setIsMenuOpen(false); }}
                   className="block py-2 text-sm text-zinc-400 hover:text-white transition-colors"
                 >
                   {link.label}
@@ -244,6 +219,7 @@ export default function App() {
         </div>
       </header>
 
+      {/* Hero Section */}
       <section id="hero" className="pt-40 pb-24 sm:pt-48 sm:pb-32 min-h-screen flex items-center relative overflow-x-clip">
         <div className="absolute inset-0 z-0">
           <LightRays 
@@ -271,24 +247,20 @@ export default function App() {
             </div>
           </div>
           
-          <div className="hero-blur hero-delay-2 max-w-4xl mx-auto mb-8">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent">
-              Authentic Romanian Flavors
-            </h1>
-          </div>
+          <h1 className="hero-blur hero-delay-2 max-w-4xl mx-auto text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] bg-gradient-to-b from-white to-zinc-400 bg-clip-text text-transparent mb-6">
+            Authentic Romanian Flavors
+          </h1>
           
-          <div className="hero-blur hero-delay-3 mb-12 max-w-2xl mx-auto">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Welcome to La Virgil, where tradition meets taste. Since 2019, we've been serving the finest Romanian dishes made with locally sourced ingredients.
-            </p>
-          </div>
+          <p className="hero-blur hero-delay-3 text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
+            Welcome to La Virgil, where traditional recipes meet modern hospitality in the heart of Domneşti.
+          </p>
           
-          <div className="hero-blur hero-delay-4 mb-16 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="hero-blur hero-delay-4 flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
             <ShimmerButton className="shadow-2xl" background="rgba(244,188,23, 1)">
-              <span className="text-sm font-medium text-black">Book Appointment</span>
+              <span className="text-sm font-medium text-black">Book a Table</span>
             </ShimmerButton>
-            
             <Button variant="outline" className="h-12 px-6 rounded-full border-white/10 text-white hover:bg-white/5">
+              <Phone className="w-4 h-4 mr-2" />
               Call Now
             </Button>
           </div>
@@ -308,52 +280,56 @@ export default function App() {
         </div>
       </section>
 
+      {/* About Section */}
       <section id="about" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
         <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-amber-500/[0.05] rounded-full blur-[140px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Our Story</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              La Virgil was founded in 2019 with a passion for preserving traditional Romanian recipes while embracing modern culinary techniques.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Our Story</h2>
+            <p className="text-lg text-muted-foreground">
+              La Virgil opened its doors in 2019 with a mission to bring authentic Romanian flavors to the community of Domneşti.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-            {aboutItems.map((item, index) => (
-              <Card key={index} className="group relative bg-white/[0.02] border-white/[0.06] backdrop-blur-sm rounded-2xl overflow-hidden hover:border-amber-500/20 transition-all duration-500 card-hover">
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <BorderBeam size={120} duration={20} delay={index * 1.5} colorFrom="#f4bc17" colorTo="#f4bc17" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative p-8">
-                  <div className="flex items-start gap-5">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/15 to-amber-600/5 border border-amber-500/10 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(244,188,23,0.15)] transition-all duration-500">
-                      <item.icon className="w-6 h-6 text-amber-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold mb-2 group-hover:text-amber-50 transition-colors">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground">{item.description}</p>
+          <div className="animate-on-scroll mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {valueProps.map((prop, index) => (
+                <Card key={index} className="group relative bg-white/[0.02] border-white/[0.06] backdrop-blur-sm rounded-2xl overflow-hidden hover:border-amber-500/20 transition-all duration-500 card-hover">
+                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <BorderBeam size={120} duration={20} delay={index * 1.5} colorFrom="#f4bc17" colorTo="#f4bc17" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="relative p-8">
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/15 to-amber-600/5 border border-amber-500/10 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(244,188,23,0.15)] transition-all duration-500">
+                        <prop.icon className="w-6 h-6 text-amber-400" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold mb-2 group-hover:text-amber-50 transition-colors">{prop.title}</h3>
+                        <p className="text-sm text-muted-foreground">{prop.description}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Services Section */}
       <section id="services" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-amber-500/[0.06] rounded-full blur-[130px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Our Menu</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Discover our selection of traditional Romanian dishes made with care and quality ingredients.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Our Menu</h2>
+            <p className="text-lg text-muted-foreground">
+              Discover our carefully curated selection of traditional Romanian dishes.
             </p>
           </div>
           
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-on-scroll">
             {services.map((service, index) => (
               <Card key={index} className="group relative bg-white/[0.02] border-white/[0.06] backdrop-blur-sm rounded-2xl overflow-hidden hover:border-amber-500/20 transition-all duration-500 card-hover">
                 <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -364,15 +340,15 @@ export default function App() {
                       <Shield className="w-6 h-6 text-amber-400" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-amber-50 transition-colors">{service.name}</h3>
+                      <h3 className="text-xl font-bold group-hover:text-amber-50 transition-colors mb-2">{service.name}</h3>
                       <p className="text-sm text-muted-foreground mb-4">{service.description}</p>
-                      <Separator className="mb-5 bg-white/[0.06]" />
+                      <Separator className="mb-4 bg-white/[0.06]" />
                       <div className="text-2xl font-black bg-gradient-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent">
                         {service.price}
                       </div>
                     </div>
                   </div>
-                  <ShimmerButton className="w-full shadow-2xl" background="rgba(244,188,23, 1)">
+                  <ShimmerButton className="w-full shadow-lg" background="rgba(244,188,23, 1)">
                     <span className="text-sm font-medium text-black">Book Now</span>
                   </ShimmerButton>
                 </div>
@@ -382,35 +358,24 @@ export default function App() {
         </div>
       </section>
 
+      {/* Why-Us Section */}
       <section id="why-us" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
         <div className="absolute bottom-0 left-1/4 w-72 h-72 bg-amber-500/[0.05] rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Why Choose La Virgil</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              What sets us apart from other restaurants in Domnesti.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Why Choose La Virgil?</h2>
+            <p className="text-lg text-muted-foreground">
+              Here's what makes us different from other restaurants in Domneşti.
             </p>
           </div>
           
-          <BentoGrid className="lg:grid-rows-2">
+          <BentoGrid className="lg:grid-rows-2 animate-on-scroll">
             {whyUsFeatures.map((feature, index) => (
               <BentoCard 
                 key={index} 
-                className={cn(
-                  "hover:border-amber-500/20",
-                  index === 0 && "col-span-3 lg:col-span-1",
-                  index === 1 && "col-span-3 lg:col-span-2",
-                  index === 2 && "col-span-3 lg:col-span-2",
-                  index === 3 && "col-span-3 lg:col-span-1"
-                )} 
-                background={
-                  index === 0 ? (
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-amber-500/5 to-transparent" />
-                  ) : (
-                    <DotPattern opacity={0.04} className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_30%,#000_100%)]" />
-                  )
-                }
+                className={cn(feature.className, "hover:border-amber-500/20")} 
+                background={feature.background}
               >
                 <div className="flex items-start gap-5">
                   <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/15 to-amber-600/5 border border-amber-500/10 flex items-center justify-center group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(244,188,23,0.15)] transition-all duration-500">
@@ -427,40 +392,41 @@ export default function App() {
         </div>
       </section>
 
+      {/* Reviews Section */}
       <section id="reviews" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
         <div className="absolute top-0 right-1/4 w-64 h-64 bg-amber-500/[0.06] rounded-full blur-[100px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-amber-500/[0.04] rounded-full blur-[140px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">What Our Guests Say</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Real reviews from people who have experienced our authentic Romanian cuisine.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">What Our Guests Say</h2>
+            <p className="text-lg text-muted-foreground">
+              Real reviews from real customers who've experienced our cuisine.
             </p>
           </div>
           
           <div className="relative flex max-w-6xl mx-auto flex-col items-center justify-center overflow-hidden">
             <Marquee pauseOnHover className="[--duration:30s]">
               {reviews.map((review, index) => (
-                <Card key={index} className="group relative bg-white/[0.02] border-white/[0.06] backdrop-blur-sm rounded-2xl overflow-hidden hover:border-amber-500/20 transition-all duration-500 card-hover mx-4 max-w-sm">
+                <Card key={index} className="group relative bg-white/[0.02] border-white/[0.06] backdrop-blur-sm rounded-2xl overflow-hidden hover:border-amber-500/20 transition-all duration-500 card-hover max-w-sm mx-4">
                   <div className="absolute inset-0 bg-gradient-to-br from-amber-500/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <BorderBeam size={80} duration={20} delay={index * 1.5} colorFrom="#f4bc17" colorTo="#f4bc17" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative p-8">
                     <div className="flex items-center mb-4">
-                      <Avatar className="w-12 h-12 mr-4">
-                        <AvatarImage src={getAvatarImage(review.gender)} alt={review.name} />
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                      ))}
+                    </div>
+                    <p className="text-muted-foreground mb-6">{review.text}</p>
+                    <div className="flex items-center">
+                      <Avatar className="mr-3">
+                        <AvatarImage src={`/assets/people/${review.role === 'Male' ? 'boy_1.jpg' : 'girl_1.jpg'}`} alt={review.name} />
                         <AvatarFallback>{review.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>
-                        <h3 className="font-bold text-lg">{review.name}</h3>
-                        <div className="flex items-center">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                          ))}
-                        </div>
+                        <p className="font-medium">{review.name}</p>
                       </div>
                     </div>
-                    <p className="text-sm text-muted-foreground italic">"{review.text}"</p>
                   </div>
                 </Card>
               ))}
@@ -471,101 +437,127 @@ export default function App() {
         </div>
       </section>
 
+      {/* FAQ Section */}
       <section id="faq" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
-        <div className="absolute top-0 left-0 w-72 h-72 bg-amber-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
-        
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Frequently Asked Questions</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Answers to common questions about our restaurant.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-muted-foreground">
+              Everything you need to know about dining at La Virgil.
             </p>
           </div>
           
-          <Accordion type="multiple" className="max-w-3xl mx-auto">
-            {faqItems.map((item, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="animate-on-scroll delay-1 border-white/[0.06] mb-4 rounded-xl">
-                <AccordionTrigger className="text-left px-6 py-4 hover:bg-white/[0.02] transition-colors duration-200">
-                  <span className="font-semibold">{item.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-muted-foreground">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+          <div className="max-w-3xl mx-auto animate-on-scroll">
+            <Accordion type="multiple" className="w-full">
+              {faqItems.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`} className="border-white/[0.06] mb-4">
+                  <AccordionTrigger className="text-left hover:bg-white/[0.02] transition-colors duration-200 px-4 py-3 rounded-xl">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-4 pb-3 text-muted-foreground">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
 
+      {/* Contact Section */}
       <section id="contact" className="relative overflow-x-clip py-24 sm:py-32 lg:py-40">
         <div className="absolute top-1/3 left-0 w-72 h-72 bg-amber-500/[0.07] rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">Visit Us Today</h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-              Come experience the warmth of Romanian hospitality and taste authentic flavors prepared with passion.
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Visit Us Today</h2>
+            <p className="text-lg text-muted-foreground">
+              Come experience authentic Romanian cuisine in the heart of Domneşti.
             </p>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              {contactItems.map((item, index) => (
-                <Card key={index} className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm">
-                  <div className="p-6 flex items-start gap-4">
+          <div className="grid lg:grid-cols-2 gap-12 animate-on-scroll">
+            <div>
+              <div className="space-y-6">
+                {[
+                  { icon: MapPin, label: "Address", value: "soseaua tudor valdimirescu, domnesti, ilfov" },
+                  { icon: Phone, label: "Phone", value: "+40757263744" },
+                  { icon: Mail, label: "Email", value: "contact@virgil.com" }
+                ].map((item, index) => (
+                  <div key={index} className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/15 to-amber-600/5 border border-amber-500/10 flex items-center justify-center">
                       <item.icon className="w-6 h-6 text-amber-400" />
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground">{item.content}</p>
+                      <p className="text-sm text-muted-foreground uppercase tracking-wider mb-1">{item.label}</p>
+                      <p className="text-white">{item.value}</p>
                     </div>
                   </div>
-                </Card>
-              ))}
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <ShimmerButton className="shadow-2xl flex-1" background="rgba(244,188,23, 1)">
-                  <span className="text-sm font-medium text-black">Call Now</span>
-                </ShimmerButton>
+                ))}
                 
-                <Button variant="outline" className="h-12 px-6 rounded-full border-white/10 text-white hover:bg-white/5 flex-1">
-                  WhatsApp
-                </Button>
+                <div className="pt-6">
+                  <h3 className="text-lg font-bold mb-4">Follow Us</h3>
+                  <div className="flex gap-3">
+                    <a href="https://instagram.com/lavirgil" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-full bg-white/[0.05] h-10 w-10">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div className="rounded-2xl overflow-hidden h-[350px] sm:h-[400px] lg:h-[500px]">
-              <iframe 
-                src={"https://www.google.com/maps?q=" + encodeURIComponent("soseaua tudor valdimirescu, domnesti, ilfov") + "&output=embed"} 
-                width="100%" 
-                height="100%" 
-                style={{border:0}} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+            <div>
+              <Card className="bg-white/[0.02] border-white/[0.05] backdrop-blur-sm">
+                <div className="p-6">
+                  <h3 className="text-lg font-bold mb-4">Get in Touch</h3>
+                  <div className="space-y-4">
+                    <Button variant="outline" className="w-full h-12 px-6 rounded-full border-white/10 text-white hover:bg-white/5">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Call Now
+                    </Button>
+                    <Button variant="outline" className="w-full h-12 px-6 rounded-full border-white/10 text-white hover:bg-white/5">
+                      <Instagram className="w-4 h-4 mr-2" />
+                      WhatsApp
+                    </Button>
+                    <ShimmerButton className="w-full shadow-lg" background="rgba(244,188,23, 1)">
+                      <span className="text-sm font-medium text-black">Book Appointment</span>
+                    </ShimmerButton>
+                  </div>
+                </div>
+              </Card>
+              
+              <div className="mt-6 h-[350px] sm:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden">
+                <iframe
+                  src={"https://www.google.com/maps?q=" + encodeURIComponent("soseaua tudor valdimirescu, domnesti, ilfov") + "&output=embed"}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="relative overflow-hidden py-8 pb-32">
-        <Separator className="mb-8 bg-white/[0.06]" />
-        
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/[0.05] py-8 pb-32">
+        <Separator className="mb-8" />
         <div className="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col md:flex-row items-center justify-between">
-          <div className="text-white text-sm mb-4 md:mb-0">
+          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
             © {new Date().getFullYear()} La Virgil. All rights reserved.
-          </div>
-          
+          </p>
           <div className="flex gap-3">
-            <a href="https://instagram.com/lavirgil" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-10 h-10 rounded-full bg-white/[0.05] hover:bg-white/[0.1] transition-colors">
-              <Instagram className="w-5 h-5 text-white" />
+            <a href="https://instagram.com/lavirgil" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center rounded-full bg-white/[0.05] h-10 w-10">
+              <Instagram className="w-5 h-5" />
             </a>
           </div>
         </div>
       </footer>
 
+      {/* Progressive Blur */}
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 hidden sm:block"><ProgressiveBlur position="bottom" height="250px" /></div><div className="pointer-events-none fixed inset-x-0 bottom-0 z-50 sm:hidden"><ProgressiveBlur position="bottom" height="150px" /></div>
     </>
   );
